@@ -19,7 +19,6 @@
 html{
     height: 100vh;
     background-color: #121212;
-    border: 5px solid rgb(0, 15, 148);
     
 }
 html::-webkit-scrollbar {
@@ -43,17 +42,16 @@ body {
     height: 100vh;
     overflow: scroll;
     flex-direction: column;
-    border: 3px solid red;
+
     /* background-color: #121212; */
 }
 header {
     /* background-color: hsla(0, 0%, 7%, 0); */
-    margin-bottom: 70px;
+    margin-bottom: 4.375rem;
 }
 .container {
     width: 100vw;
     height: 13rem;
-    border : 1px solid red;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -93,15 +91,15 @@ form {
     
     
     input {
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
+        border-top-left-radius: .375rem;
+        border-bottom-left-radius: .375rem;
         border-style: none;
         background-color: #2E2E2F;
     }
 
     button {
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
+        border-top-right-radius: .375rem;
+        border-bottom-right-radius: .375rem;
         background-color: #4B4B4B;
         border-style: none;
         color: white;
@@ -132,7 +130,7 @@ form {
 
 */
 .movie-seach input[type="text"] {
-    padding-left: 30px; /* Space for the icon */
+    padding-left: 1.875rem; /* Space for the icon */
     width: calc(74% - 30px); /* Adjusted width to accommodate icon */
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -161,7 +159,7 @@ form {
     top: 50%;
     transform: translateY(-50%);
     color: white;
-    font-size: 16px; /* Adjusted icon size */
+    font-size: 1rem; /* Adjusted icon size */
 }
 
 
@@ -194,7 +192,7 @@ input:is(:focus){
     justify-content: center;
     align-items: center;
     /* overflow: scroll; */
-    gap: 20px;
+    gap: 1.25rem;
     
     /* border: 3px solid lime; */
     /* padding-top: 250px; */
@@ -225,10 +223,10 @@ input:is(:focus){
     border: 3px solid lime;
     i {
        color: #2E2E2F;
-       font-size: 70px; 
+       font-size: 4.375rem; 
       }
     p {
-        font-style: 18px;
+        font-style: 1.125rem;
         font-weight: 700;
     }
 }
@@ -236,20 +234,20 @@ input:is(:focus){
 .search i{
     color: white;
 
-    font-size: 15px;
+    font-size: .9375rem;
 }
 
 .movie{
     color: white;
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 1.25rem;
     width: 80vw;
     border: 3px solid lime;
 
     img {
-        width: 99px;
-        height: 147px;
+        width: 9.1875rem;
+        height: 12.1875rem;
         
     }
 }
@@ -257,15 +255,15 @@ input:is(:focus){
     align-self: center;
     
     h2{
-        font-size: 23px;
+        font-size: 1.4375rem;
         span{
-            font-size: 14px;
+            font-size: .875rem;
             font-weight: normal;
         }
     }
     p{
     color: white;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: normal;
     margin-bottom: 10px;
     margin-top: 5px;
@@ -274,7 +272,7 @@ input:is(:focus){
     .desc{
         font-weight: normal;
         color: #A5A5A5;
-        font-size: 14px;
+        font-size: 0.875rem;
     }
     /* i{
         color: white;
@@ -282,7 +280,7 @@ input:is(:focus){
         font-size: 15px;
     } */
     button {
-        height: 20px;
+        height: 1.25rem;
         color: white;
         background-color: #121212;
         border-style: none;
@@ -290,13 +288,13 @@ input:is(:focus){
     }
     i{
         color: white;
-        font-size: 15px;
+        font-size: .94rem;
     }
 }
 
 hr{
-    margin-top: 20px;
-    margin-bottom: 25px;
+    margin-top: 1.25rem;
+    margin-bottom: 1.56rem;
     width: 80vw;
     font-size: 1.5px;
     color: #2C2C2C;
