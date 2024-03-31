@@ -1,17 +1,14 @@
-// 6ad11fff
+/// 6ad11fff
 const movieInput = document.getElementById('input');
 const searchBtn = document.getElementById('search');
 const moviesChoices = document.querySelector(".empty");
 const watchlistPage = document.getElementById('watchlistPage');
 const filmPage = document.getElementById('filmPage');
 
-
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
     moviesChoices.style.color = "white";
     moviesChoices.innerHTML = '';
-    
-    
 
     fetch(`http://www.omdbapi.com/?apikey=6ad11fff&s=${movieInput.value}`)
     .then(res => {
@@ -35,56 +32,87 @@ searchBtn.addEventListener("click", (e) => {
         ));
     })
     .then(movies => renderMovies(movies))
-    .catch(error => {console.error('Error:', error),
-                    movieInput.placeholder = "Searching something with no data",
-                moviesChoices.innerHTML = `<p>Unable to find what you're looking for. Please try another search.</p>`});
+    .catch(error => {
+        console.error('Error:', error);
+        movieInput.placeholder = "Searching something with no data";
+        moviesChoices.innerHTML = `<p>Unable to find what you're looking for. Please try another search.</p>`;
+    });
 
-                movieInput.value = '';
+    movieInput.value = '';
 });
 
 function renderMovies(movies) {
-    let moviesHTML = '';
     for(let movie of movies) {
-        moviesHTML += `<div class="movie">
+        const movieHTML = `<div class="movie">
             <img src="${movie.Poster}" alt="poster of the movie ${movie.Title}">
             <div class="movieDescription">
                 <h2>${movie.Title} &#11088 <span>${movie.Ratings[0].Value}</span></h2>
-                <p>${movie.Runtime} &nbsp  &nbsp ${movie.Genre}  &nbsp &nbsp <button class="watchlist-btn">
+                <p>${movie.Runtime} &nbsp  &nbsp ${movie.Genre}  &nbsp &nbsp <button class="watchlist-btn" data-title="${movie.Title}" data-poster="${movie.Poster}" data-rating="${movie.Ratings[0].Value}" data-runtime="${movie.Runtime}" data-genre="${movie.Genre}" data-plot="${movie.Plot}">
                     <i class="fa-solid fa-circle-plus"></i> Watchlist</button>
                 </p>
                 <p class="desc">${movie.Plot}</p>
             </div>
         </div>
         <hr />`;
+        moviesChoices.innerHTML += movieHTML;
+
+        // Add event listener to watchlist button of this movie
+        const watchlistButton = moviesChoices.querySelector('.watchlist-btn');
+        watchlistButton.addEventListener('click', addToWatchlist);
     }
-    moviesChoices.innerHTML = moviesHTML;
-    
-    // Add event listeners to watchlist buttons
-    const watchlistButtons = document.querySelectorAll('.watchlist-btn');
-    watchlistButtons.forEach(button => {
-        button.addEventListener('click', addToWatchlist);
-    });
 }
+
 
 function addToWatchlist(event) {
-    // Implement functionality to add the movie to the watchlist
-    // For example, you can extract movie information from the DOM and store it locally or on a server
-    // You can also display a message indicating that the movie has been added to the watchlist
+    event.preventDefault();
+    const movie = {
+        Title: this.getAttribute('data-title'),
+        Poster: this.getAttribute('data-poster'),
+        Rating: this.getAttribute('data-rating'),
+        Runtime: this.getAttribute('data-runtime'),
+        Genre: this.getAttribute('data-genre'),
+        Plot: this.getAttribute('data-plot')
+    };
+    let myMovies = JSON.parse(localStorage.getItem('myMovies')) || [];
+    myMovies.push(movie);
+    localStorage.setItem('myMovies', JSON.stringify(myMovies));
 }
 
-watchlistPage.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = 'watchlist.html';
-});
+// let myMovies = JSON.parse(localStorage.getItem('myMovies')) || [];
+// if (myMovies.length > 0) {
+//     const myMovieWatchlist = document.querySelector('#container');
+//     myMovies.forEach(movie => {
+//         const movieHTML = `<div class="movie">
+//             <img src="${movie.Poster}" alt="poster of the movie ${movie.Title}">
+//             <div class="movieDescription">
+//                 <h2>${movie.Title} &#11088 <span>${movie.Rating}</span></h2>
+//                 <p>${movie.Runtime} &nbsp  &nbsp ${movie.Genre}</p>
+//                 <p class="desc">${movie.Plot}</p>
+//             </div>
+//         </div>
+//         <hr />`;
+//         myMovieWatchlist.innerHTML += movieHTML;
+//     });
+// } else {
+//     console.log('No movie data found in local storage.');
+// }
 
-filmPage.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = 'index.html';
-});
 
-
-
-
-
-
-
+// let myMovies = JSON.parse(localStorage.getItem('myMovies')) || [];
+// if (myMovies.length > 0) {
+//     const myMovieWatchlist = document.querySelector('#container');
+//     myMovies.forEach(movie => {
+//         const movieHTML = `<div class="movie">
+//             <img src="${movie.Poster}" alt="poster of the movie ${movie.Title}">
+//             <div class="movieDescription">
+//                 <h2>${movie.Title} &#11088 <span>${movie.Rating}</span></h2>
+//                 <p>${movie.Runtime} &nbsp  &nbsp ${movie.Genre}</p>
+//                 <p class="desc">${movie.Plot}</p>
+//             </div>
+//         </div>
+//         <hr />`;
+//         myMovieWatchlist.innerHTML += movieHTML;
+//     });
+// } else {
+//     console.log('No movie data found in local storagevvv.');
+// }

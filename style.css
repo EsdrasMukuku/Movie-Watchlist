@@ -220,7 +220,7 @@ input:is(:focus){
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px solid lime;
+    border: 3px solid #2E2E2F;
     i {
        color: #2E2E2F;
        font-size: 4.375rem; 
@@ -243,7 +243,7 @@ input:is(:focus){
     flex-direction: row;
     gap: 1.25rem;
     width: 80vw;
-    border: 3px solid lime;
+    border: 1px solid #2E2E2F;
 
     img {
         width: 9.1875rem;
@@ -298,5 +298,12 @@ hr{
     width: 80vw;
     font-size: 1.5px;
     color: #2C2C2C;
+}
+
+#container{
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    
 }
 
